@@ -8,19 +8,10 @@
 <input id="input" type="text">
 
 <button onclick="set()">保存</button>
-
-<button onclick="get()">Ex H</button>
-
-<button onclick="remove()">i</button>
-
 <script>
-
 let arr= []
-
 function set()
-
 let input = document.getElementById("input").value;
-
 arr.push(input)
   let arrStr=JSON.stringifyl(arr)
   localStorage.setItem("arrStr",arrStr)
