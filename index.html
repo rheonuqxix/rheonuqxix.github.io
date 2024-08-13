@@ -1,56 +1,30 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>保存表单数据到本地存储</title>
-  </head>
-  <body>
-    <h1>保存表单数据到本地存储</h1>
+<head>
+<meta charset="utf-8">
+«title>Document</title>
+</head>
+<body>
+<input id="input" type="text">
 
-    <form id="myForm">
-      <label for="name">姓名：</label>
-      <input type="text" id="name" name="name">
-      <br>
-      <label for="email">电子邮件：</label>
-      <input type="email" id="email" name="email">
-      <br>
-      <input type="submit" value="提交">
-      <button id="clearButton">清除数据</button>
-    </form>
+<button onclick="set()">保存</button>
 
-    <script>
-      // 获取表单元素
-      const form = document.getElementById('myForm');
-      const nameInput = document.getElementById('name');
-      const emailInput = document.getElementById('email');
-      const clearButton = document.getElementById('clearButton');
+<button onclick="get()">Ex H</button>
 
-      // 监听表单提交事件
-      form.addEventListener('submit', function(event) {
-        event.preventDefault();
+<button onclick="remove()">i</button>
 
-        localStorage.setItem('name', nameInput.value);
-        localStorage.setItem('email', emailInput.value);
-      });
+<script>
 
-      // 在页面加载时加载已保存的数据
-      window.addEventListener('load', function() {
-        const savedName = localStorage.getItem('name');
-        const savedEmail = localStorage.getItem('email');
+let arr= []
 
-        if (savedName) {
-          nameInput.value = savedName;
-        }
+function set()
 
-        if (savedEmail) {
-          emailInput.value = savedEmail;
-        }
-      });
+let input = document.getElementById("input").value;
 
-      // 清除已保存的数据
-      clearButton.addEventListener('click', function() {
-        localStorage.clear();
-      });
-    </script>
-  </body>
+arr.push(input)
+  let arrStr=JSON.stringifyl(arr)
+  localStorage.setItem("arrStr",arrStr)
+  }
+</script>
+</body>
 </html>
