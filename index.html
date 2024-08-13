@@ -1,40 +1,46 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title></title>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
+    <script>
+        // Firebase 配置
+        const firebaseConfig = {
+            apiKey: "你的API密钥",
+            authDomain: "你的项目ID.firebaseapp.com",
+            projectId: "你的项目ID",
+            storageBucket: "你的项目ID.appspot.com",
+            messagingSenderId: "发送者ID",
+            appId: "应用ID"
+        };
+
+        // 初始化 Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        // 保存文本
+        async function saveText() {
+            const userId = '用户唯一标识'; // 需要实现用户身份识别
+            const text = document.getElementById('textInput').value;
+            await db.collection('userText').doc(userId).set({ text: text });
+            alert('文本已保存！');
+        }
+
+        // 加载文本
+        async function loadText() {
+            const userId = '用户唯一标识'; // 需要实现用户身份识别
+            const doc = await db.collection('userText').doc(userId).get();
+            if (doc.exists) {
+                document.getElementById('textInput').value = doc.data().text;
+            } else {
+                alert('没有找到保存的文本。');
+            }
+        }
+    </script>
 </head>
 <body>
-<h1>这里</h1>
-<textarea id="textInput" placeholder="在这里输入文本..." rows="5" cols="40"></textarea><br>
-<button id="saveButton">保存</button>
-<button id="loadButton">加载保存内容</button>
-<div id="savedText"></div>
-
-<script>
-const textInput = document.getElementById('textInput');
-const saveButton = document.getElementById('saveButton');
-const loadButton = document.getElementById('loadButton');
-const savedText = document.getElementById('savedText');
-
-// 保存文本到localStorage
-saveButton.addEventListener('click', () => {
-const text = textInput.value;
-localStorage.setItem('savedText', text);
-alert('文本已保存！');
-});
-
-// 从localStorage加载文本
-loadButton.addEventListener('click', () => {
-const storedText = localStorage.getItem('savedText');
-if (storedText) {
-textInput.value = storedText;
-savedText.innerText = storedText; // 显示保存的文本
-} else {
-alert('没有保存的文本！');
-}
-});
-</script>
+    <textarea id="textInput" rows="10" cols="30" placeholder="输入文本..."></textarea><br>
+    <button onclick="saveText()">保存文本</button>
+    <button onclick="loadText()">加载文本</button>
 </body>
 </html>
