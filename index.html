@@ -1,12 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh">
 <head>
-<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, 
-maximum-scale=1.0, user-scalable=no"/>
-<title>？</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000; /* 背景设置为黑色 */
+            color: #fff; /* 默认文本颜色设置为白色 */
+        }
+        .text-container {
+            max-width: 100%; /* 最大宽度为100%，适配屏幕 */
+            padding: 10px;   /* 添加一些内边距 */
+            word-wrap: break-word; /* 在单词之间换行 */
+            overflow-wrap: break-word; /* 处理长单词的换行 */
+            background-color: #000; /* 背景颜色设置为黑色 */
+            color: #fff; /* 文本颜色设置为白色 */
+        }
+    </style>
 </head>
 <body>
-    <h1>我的第一个标题</h1>
-    <p>555555555555555555555555555555555555555555555555555555555555555555555555555555</p>
+    <div class="text-container">
+        <p>
+            这是一个示例文本。这段文本展示了如何使用HTML和CSS保持文本在屏幕内，不超出右侧边界，并在内容过长时自动向下对齐。
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </p>
+    </div>
 </body>
 </html>
